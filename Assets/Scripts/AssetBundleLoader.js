@@ -7,11 +7,15 @@ function Start() {
 }
 
 function OnGUI() {
+	GUILayout.BeginArea(Rect(10, 10, 200, Screen.height - 20));
+	GUILayout.BeginVertical();
 	for (file in files) {
-		if (GUILayout.Button(file.Name)) {
+		if (GUILayout.Button(file.Name, GUILayout.ExpandHeight(true))) {
 			StartCoroutine(LoadAndInstantiate(file.Name));
 		}
 	}
+	GUILayout.EndVertical();
+	GUILayout.EndArea();
 }
 
 private function LoadAndInstantiate(filename : String) {
